@@ -1,0 +1,4 @@
+lesson\AppConfig.class
+lesson\controllers\HelloController.class
+lesson\controllers\HelloController$User.class
+lesson\WebConfig.class

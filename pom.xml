@@ -15,18 +15,41 @@
             <artifactId>spring-webmvc</artifactId>
             <version>5.1.1.RELEASE</version>
         </dependency>
-
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
             <version>3.1.0</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-web</artifactId>
+            <version>5.1.1.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-config</artifactId>
+            <version>5.1.1.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
+        </dependency>
+        <!--        <dependency>-->
+<!--            <groupId>io.springfox</groupId>-->
+<!--            <artifactId>springfox-swagger2</artifactId>-->
+<!--            <version>2.9.2</version>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>io.springfox</groupId>-->
+<!--            <artifactId>springfox-swagger-ui</artifactId>-->
+<!--            <version>2.9.2</version>-->
+<!--        </dependency>-->
     </dependencies>
 
     <build>
         <plugins>
-
             <plugin>
                 <artifactId>maven-war-plugin</artifactId>
                 <version>2.2</version>
@@ -34,48 +57,14 @@
                     <failOnMissingWebXml>false</failOnMissingWebXml>
                 </configuration>
             </plugin>
-
             <plugin>
-                <groupId>org.codehaus.cargo</groupId>
-                <artifactId>cargo-maven2-plugin</artifactId>
-                <version>1.7.10</version>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <container>
-                        <containerId>tomcat9x</containerId>
-                        <type>embedded</type>
-                    </container>
-                    <configuration>
-                        <properties>
-                            <cargo.servlet.port>8081</cargo.servlet.port>
-                            <cargo.tomcat.manager.url>http://localhost:8081</cargo.tomcat.manager.url>
-                        </properties>
-                    </configuration>
-                    <deployables>
-                        <deployable>
-                            <groupId>org.example</groupId>
-                            <artifactId>dispatcher-servlet-test-second-version</artifactId>
-                            <type>war</type>
-                            <properties>
-                                <!--important reference-->
-                                <!--https://codehaus-cargo.github.io/cargo/Maven2+Plugin+Reference+Guide.html-->
-                                <!--https://stackoverflow.com/questions/17194226/cargo-maven2-plugin-change-target-text-on-remote-type-->
-                                <context>/</context>
-                            </properties>
-                        </deployable>
-                    </deployables>
+                    <source>6</source>
+                    <target>6</target>
                 </configuration>
-
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>run</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
-
         </plugins>
     </build>
-
 </project>

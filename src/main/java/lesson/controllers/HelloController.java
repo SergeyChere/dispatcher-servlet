@@ -1,32 +1,27 @@
 package lesson.controllers;
 
+import lesson.model.User;
+import org.springframework.http.MediaType;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-@RestController
+@Controller
 public class HelloController {
 
-//    cannot response with JSON!!!
-    @GetMapping("/hello")
-    public String getUser() {
-        return "Hello";
+    @RequestMapping(value = "/hello",
+            method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public User getUser() {
+        System.out.println("I'm here");
+        return new User("Alex", 29);
     }
 
-    private class User {
-        private String name;
-        private int age;
-
-        public User (String name, int age) {
-            this.name=name;
-            this.age=age;
-        }
-
-        public int getAge() {
-            return age;
-        }
-
-        public String getName() {
-            return name;
-        }
+    @GetMapping("/jsp")
+    public String getJSPPage() {
+        return "main";
     }
 }
